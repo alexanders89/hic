@@ -28,7 +28,12 @@ app.get('/machineone', function(req, res){
 })
 
 app.post('/machineOne', function(req, res){
-  console.log(req.body)
+  newJph = req.body.newJph
+  newState = req.body.newState
+  newFault = req.body.newFault
+  console.log(newJph)
+  console.log(newState)
+  console.log(newFault)
   res.send("Hello")
 })
 
