@@ -23,7 +23,7 @@ app.get('/machineone', function(req, res){
   res.send(machineOne)
 })
 
-app.put('/machineOne', function(req, res){
+app.post('/machineOne', function(req, res){
   res.send(req.body)
 })
 
