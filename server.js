@@ -31,9 +31,7 @@ app.post('/machineOne', function(req, res){
   newJph = req.body.newJph
   newState = req.body.newState
   newFault = req.body.newFault
-  console.log(newJph)
-  console.log(newState)
-  console.log(newFault)
+  update(newJph, newState, newFault)
   res.send("Hello")
 })
 
