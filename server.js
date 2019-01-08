@@ -24,7 +24,8 @@ app.get('/machineone', function(req, res){
 })
 
 app.post('/machineOne', function(req, res){
-  res.send(req.body)
+  console.log(req.body)
+  res.send("Hello")
 })
 
 
