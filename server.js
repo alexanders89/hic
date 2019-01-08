@@ -24,11 +24,7 @@ app.get('/machineone', function(req, res){
 })
 
 app.put('/machineOne', function(req, res){
-  newJph = req.body.newJph
-  newState = req.body.newState
-  newFault = req.body.newFault
-  update(newJph, newState, newFault)
-  res.send(machineOne)
+  res.send(req.body)
 })
 
 
