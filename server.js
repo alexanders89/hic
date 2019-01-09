@@ -10,29 +10,48 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static('public'))
 
-var machineOne = {
-  "name" : "Machine One",
-  "currentJph" : 0,
-  "currentState" : "Default",
-  "topFaults" : []
+var machineData = {
+  "machine1" : {
+    "name" : "Machine One",
+    "jph" : 10,
+    "state" : "Machine One State",
+    "faults" : [1,1,1]
+  },
+  "machine2" : {
+    "name" : "Machine Two",
+    "jph" : 20,
+    "state" : "Machine Two State",
+    "faults" : [2,2,2]
+  },
+  "machine3" : {
+    "name" : "Machine Three",
+    "jph" : 30,
+    "state" : "Machine Three State",
+    "faults" : [3,3,3]
+  }
 }
 
-function update(newJph, newState, newFault){
-  machineOne.currentJph = newJph
-  machineOne.currentState = newState
-  machineOne.topFaults = newFault
+function update(machineNumber, newObject){
+  targetMachine = machineData[`machine${machineNumber}`]
+  for (var key in newObject){
+    targetMachine[key] = newObject[key]
+  }
 }
 
-app.get('/machineone', function(req, res){
-  res.send(machineOne)
+app.get('/allmachine', function(req, res){
+  res.status(200).send(machineData)
 })
 
-app.post('/machineOne', function(req, res){
-  newJph = req.body.newJph
-  newState = req.body.newState
-  newFault = req.body.newFault
-  update(newJph, newState, newFault)
-  res.send("Hello")
+app.get('/machine/:id', function(req, res){
+  target = `machine${req.params.id}`
+  res.send(machineData[target])
+})
+
+
+app.post('/machine/:id', function(req, res){
+  machineNumber = req.params.id
+  update(machineNumber, req.body)
+  res.send("Hello!")
 })
 
 
