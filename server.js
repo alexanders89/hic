@@ -75,7 +75,7 @@ function sendMessage(){
   .create({
     body: `Hi, thanks for texting me!`,
     from: `+441412807187`,
-    to: TOPHONENUMBER
+    to: '07791415382'
   })
   .then(message => console.log(message.sid))
   .done();
