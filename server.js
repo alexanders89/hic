@@ -7,8 +7,8 @@ const bodyParser = require('body-parser')
 const dotenv = require('dotenv');
 dotenv.config();
 
-const accountSid = process.env.accountSid
-const authToken = process.env.authToken
+const ACCOUNTSID = process.env.ACCOUNTSID
+const AUTHTOKEN = process.env.AUTHTOKEN
 
 app.use(bodyParser.json())
 
@@ -63,8 +63,8 @@ app.post('/machine/:id', function(req, res){
 })
 
 app.get('/test', function(req, res){
-  // sendMessage()
-  res.send(accountSid)
+  console.log(process.env.ACCOUNTSID)
+  res.send(ACCOUNTSID)
 })
 
 // function sendMessage(){
