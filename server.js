@@ -62,11 +62,6 @@ app.post('/machine/:id', function(req, res){
   res.send("Hello!")
 })
 
-app.get('/test', function(req, res){
-  console.log(process.env.ACCOUNTSID)
-  res.send(ACCOUNTSID)
-})
-
 // function sendMessage(){
 //   client.messages
 //   .create({
