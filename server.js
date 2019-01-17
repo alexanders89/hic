@@ -60,7 +60,7 @@ app.post('/machine/:id', function(req, res){
 })
 
 app.post('/test', function(req, res){
-  sendMessage()
+  // sendMessage()
   res.send("Hello!")
 })
 
@@ -74,8 +74,5 @@ function sendMessage(){
   .then(message => console.log(message.sid))
   .done();
 }
-
-
-
 
 app.listen(process.env.PORT || 8080, () => console.log('all is ok'))
