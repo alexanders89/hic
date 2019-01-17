@@ -66,12 +66,9 @@ app.post('/machine/:id', function(req, res){
 })
 
 app.post('/test', function(req, res){
-  console.log(`******${FROMPHONENUMBER}******`)
+  sendMessage()
   res.send("Hello!")
 })
-
-
-
 
 function sendMessage(){
   client.messages
