@@ -2,9 +2,9 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 
-// const accountSid = 'AC85d63b6b199aa2e579f511eaa1f74c44';
-// const authToken = '643f6a8a91ec054bb6bc1e8fdca02ac4';
-// const client = require('twilio')(accountSid, authToken);
+const accountSid = 'AC85d63b6b199aa2e579f511eaa1f74c44';
+const authToken = '643f6a8a91ec054bb6bc1e8fdca02ac4';
+const client = require('twilio')(accountSid, authToken);
 
 
 app.use(bodyParser.json())
@@ -64,15 +64,15 @@ app.post('/test', function(req, res){
   res.send("Hello!")
 })
 
-function sendMessage(){
-  client.messages
-  .create({
-    body: `Hi, thanks for texting me!`,
-    from: '+441412807187',
-    to: '07791415382'
-  })
-  .then(message => console.log(message.sid))
-  .done();
-}
+// function sendMessage(){
+//   client.messages
+//   .create({
+//     body: `Hi, thanks for texting me!`,
+//     from: '+441412807187',
+//     to: '07791415382'
+//   })
+//   .then(message => console.log(message.sid))
+//   .done();
+// }
 
 app.listen(process.env.PORT || 8080, () => console.log('all is ok'))
