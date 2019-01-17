@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 
-// const client = require('twilio')(accountSid, authToken);
+const client = require('twilio')(accountSid, authToken);
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -66,6 +66,14 @@ app.post('/machine/:id', function(req, res){
   update(machineNumber, req.body)
   res.send("Hello!")
 })
+
+app.post('/test', function(req, res){
+  console.log(`******${FROMPHONENUMBER}******`)
+  res.send("Hello!")
+})
+
+
+
 
 function sendMessage(){
   client.messages
