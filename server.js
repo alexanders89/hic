@@ -70,9 +70,7 @@ app.post('/machine/:id', function(req, res){
 
 app.post('/test', function(req, res){
   const twiml = new MessagingResponse();
-  console.log("Sending message")
-  console.log(req.body)
-  twiml.message('The Robots are coming! Head for the hills!');
+  twiml.message(req.body.Body);
   res.writeHead(200, {'Content-Type': 'text/xml'});
   res.end(twiml.toString());
 })
