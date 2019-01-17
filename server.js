@@ -10,6 +10,11 @@ dotenv.config();
 const ACCOUNTSID = process.env.ACCOUNTSID
 const AUTHTOKEN = process.env.AUTHTOKEN
 
+const FROMPHONENUMBER = process.env.AUTHTOKEN
+const TOPHONENUMBER = process.env.AUTHTOKEN
+
+
+
 app.use(bodyParser.json())
 
 app.use(bodyParser.urlencoded({
@@ -62,15 +67,15 @@ app.post('/machine/:id', function(req, res){
   res.send("Hello!")
 })
 
-// function sendMessage(){
-//   client.messages
-//   .create({
-//     body: `Hi, thanks for texting me!`,
-//     from: '+441412807187',
-//     to: '07791415382'
-//   })
-//   .then(message => console.log(message.sid))
-//   .done();
-// }
+function sendMessage(){
+  client.messages
+  .create({
+    body: `Hi, thanks for texting me!`,
+    from: `+${FROMPHONENUMBER}`,
+    to: TOPHONENUMBER
+  })
+  .then(message => console.log(message.sid))
+  .done();
+}
 
 app.listen(process.env.PORT || 8080, () => console.log('all is ok'))
