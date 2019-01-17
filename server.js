@@ -71,7 +71,7 @@ app.post('/machine/:id', function(req, res){
 app.post('/test', function(req, res){
   const twiml = new MessagingResponse();
   target = `machine${req.body.Body}`
-  twiml.message(`Information for Operation ${req.body.Body}:\n${machineData[target]}`);
+  twiml.message(`Information for Operation ${req.body.Body}:\n${machineData[target].name}`);
   res.writeHead(200, {'Content-Type': 'text/xml'});
   res.end(twiml.toString());
 })
