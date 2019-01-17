@@ -5,11 +5,11 @@ const bodyParser = require('body-parser')
 const dotenv = require('dotenv');
 dotenv.config();
 
-const ACCOUNTSID = process.env.ACCOUNTSID
-const AUTHTOKEN = process.env.AUTHTOKEN
+const ACCOUNTSID = process.env.accountSid
+const AUTHTOKEN = process.env.authToken
 
-const FROMPHONENUMBER = process.env.AUTHTOKEN
-const TOPHONENUMBER = process.env.AUTHTOKEN
+const FROMPHONENUMBER = process.env.fromNumber
+const TOPHONENUMBER = process.env.toNumber
 
 const client = require('twilio')(ACCOUNTSID, AUTHTOKEN);
 
@@ -68,7 +68,6 @@ app.post('/machine/:id', function(req, res){
 
 app.post('/test', function(req, res){
   console.log("Sending Text")
-
   sendMessage()
   res.send("Hello!")
 })
@@ -78,8 +77,8 @@ function sendMessage(){
   client.messages
   .create({
     body: `Hi, thanks for texting me!`,
-    from: `+441412807187`,
-    to: '07791415382'
+    from: `+${FROMPHONENUMBER}`,
+    to: TOPHONENUMBER
   })
   .then(message => console.log(message.sid))
   .done();
