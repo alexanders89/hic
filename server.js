@@ -74,7 +74,7 @@ function sendMessage(){
   client.messages
   .create({
     body: `Hi, thanks for texting me!`,
-    from: `+${FROMPHONENUMBER}`,
+    from: `+441412807187`,
     to: TOPHONENUMBER
   })
   .then(message => console.log(message.sid))
