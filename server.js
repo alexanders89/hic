@@ -2,18 +2,16 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 
-const client = require('twilio')(accountSid, authToken);
-
-const dotenv = require('dotenv');
-dotenv.config();
-
 const ACCOUNTSID = process.env.ACCOUNTSID
 const AUTHTOKEN = process.env.AUTHTOKEN
 
 const FROMPHONENUMBER = process.env.AUTHTOKEN
 const TOPHONENUMBER = process.env.AUTHTOKEN
 
+const client = require('twilio')(ACCOUNTSID, AUTHTOKEN);
 
+const dotenv = require('dotenv');
+dotenv.config();
 
 app.use(bodyParser.json())
 
