@@ -45,6 +45,17 @@ var machineData = {
   }
 }
 
+var lineData = {
+  "name" : "Line 1",
+  "jph" : 25,
+  "state" : "Singing in the rain",
+  "buyOffScore" : 10,
+  "stoppedOps" : [1,2,3],
+  "faultsByTime" : [1,2,3],
+  "faultsByOccurancy" : [1,2,3],
+  "opsDelta" : [1,2,3]
+}
+
 function update(machineNumber, newObject){
   targetMachine = machineData[`machine${machineNumber}`]
   for (var key in newObject){
@@ -55,6 +66,11 @@ function update(machineNumber, newObject){
 app.get('/allmachine', function(req, res){
   res.status(200).send(machineData)
 })
+
+app.get('/line', function(req, res){
+  res.status(200).send(lineData)
+})
+
 
 app.get('/machine/:id', function(req, res){
   target = `machine${req.params.id}`
