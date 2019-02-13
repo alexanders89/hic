@@ -63,12 +63,24 @@ function update(machineNumber, newObject){
   }
 }
 
+function updateLine(newObject){
+  for (var key in newObject){
+    lineData[key] = newObject[key]
+  }
+}
+
 app.get('/allmachine', function(req, res){
   res.status(200).send(machineData)
 })
 
 app.get('/line', function(req, res){
   res.status(200).send(lineData)
+})
+
+app.post('/line', function(req, res){
+  updateLine(req.body)
+  res.send("Hi")
+
 })
 
 
