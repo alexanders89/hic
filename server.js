@@ -5,15 +5,15 @@ const bodyParser = require('body-parser')
 const dotenv = require('dotenv');
 dotenv.config();
 
-const ACCOUNTSID = process.env.accountSid
-const AUTHTOKEN = process.env.authToken
+//const ACCOUNTSID = process.env.accountSid
+//const AUTHTOKEN = process.env.authToken
 
-const FROMPHONENUMBER = process.env.fromNumber
-const TOPHONENUMBER = process.env.toNumber
+//const FROMPHONENUMBER = process.env.fromNumber
+//const TOPHONENUMBER = process.env.toNumber
 
-const client = require('twilio')(ACCOUNTSID, AUTHTOKEN);
+//const client = require('twilio')(ACCOUNTSID, AUTHTOKEN);
 
-const MessagingResponse = require('twilio').twiml.MessagingResponse;
+//const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
 
 app.use(bodyParser.json())
@@ -96,12 +96,12 @@ app.post('/machine/:id', function(req, res){
   res.send("Hello!")
 })
 
-app.post('/test', function(req, res){
-  const twiml = new MessagingResponse();
-  target = `machine${req.body.Body}`
-  twiml.message(`\nInformation for Operation ${req.body.Body}\nJobs Per Hour: ${machineData[target].jph}\nState: ${machineData[target].state}\nTop Fault: ${machineData[target].faults[0]}\nThanks for using HIC!`);
-  res.writeHead(200, {'Content-Type': 'text/xml'});
-  res.end(twiml.toString());
-})
+// app.post('/test', function(req, res){
+//   const twiml = new MessagingResponse();
+//   target = `machine${req.body.Body}`
+//   twiml.message(`\nInformation for Operation ${req.body.Body}\nJobs Per Hour: ${machineData[target].jph}\nState: ${machineData[target].state}\nTop Fault: ${machineData[target].faults[0]}\nThanks for using HIC!`);
+//   res.writeHead(200, {'Content-Type': 'text/xml'});
+//   res.end(twiml.toString());
+// })
 
 app.listen(process.env.PORT || 8080, () => console.log('all is ok'))
